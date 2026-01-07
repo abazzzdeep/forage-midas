@@ -4,12 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Transaction {
+
     private long senderId;
     private long recipientId;
     private float amount;
 
-    public Transaction() {
-    }
+    // Required for Kafka / Jackson
+    public Transaction() {}
 
     public Transaction(long senderId, long recipientId, float amount) {
         this.senderId = senderId;
@@ -21,28 +22,20 @@ public class Transaction {
         return senderId;
     }
 
-    public void setSenderId(long senderId) {
-        this.senderId = senderId;
-    }
-
     public long getRecipientId() {
         return recipientId;
-    }
-
-    public void setRecipientId(long recipientId) {
-        this.recipientId = recipientId;
     }
 
     public float getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
     @Override
     public String toString() {
-        return "Transaction {senderId=" + senderId + ", recipientId=" + recipientId + ", amount=" + amount + "}";
+        return "Transaction{" +
+                "senderId=" + senderId +
+                ", recipientId=" + recipientId +
+                ", amount=" + amount +
+                '}';
     }
 }
